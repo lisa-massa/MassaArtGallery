@@ -1,0 +1,43 @@
+<% layout('/layouts/boilerplate')%>
+<title>Artwork | MAG</title>
+    <h1 class="col-6">Artwork</h1>
+    <% if(currentUser) {%>
+    <div> 
+        <a class="mb-3 btn btn-outline-secondary" href="/artwork/new">Add Artwork</a>
+    </div>
+    <% } %> 
+<% for(let artwork of artworks) {%>
+        <div class="card mt-3 mb-3">
+                <div class="row">
+                    <div class="col-md-4">
+                        <% if(artwork.image.length) {%>
+                            <img class="img-fluid" alt="" src="<%= artwork.image[0].url%>">
+                            <% }else {%>  
+                                <img class="img-fluid" alt="" src="https://res.cloudinary.com/dz0twneew/image/upload/v1658411005/YelpCamp/ztrjtajeaa9nyqadhg8o.webp">
+                                <% } %> 
+                            </div>
+            
+            <!-- Title -->
+            <div class="col-md-4">
+                <div class="card-body">
+                    <h5 class="card-title">
+                      <%= artwork.title%>
+                     </h5>
+
+                <!-- Year -->
+                        <p class="card-text">
+                             <small class="text-muted">
+                                 <%= artwork.year%>
+                                </small>
+
+                    <!-- Show -->
+                            <a class="btn btn-outline-secondary" href="/artwork/<%=artwork._id%>">View
+                                <%=artwork.title%>
+                             </a>
+                         </p>
+                     </div>
+                 </div>
+            </div>
+        </div>
+        
+        <% } %> 
