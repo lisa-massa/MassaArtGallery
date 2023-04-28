@@ -7,7 +7,7 @@ const Artwork = require('../models/artworks');
 const { firstNames, lastNames } = require('./randomNames');
 const { surfaceName, materialName } = require('./randomMedia');
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/art-portfolio';
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/massaartgallery';
 
 mongoose.connect(dbUrl);
 
