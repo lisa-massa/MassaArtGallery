@@ -33,7 +33,7 @@ const methodOverride = require('method-override');
 const artworkRoutes = require('./routes/artworks');
 const userRoutes = require('./routes/users');
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/massaartgallery';
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/art-portfolio';
 
 mongoose.connect(dbUrl);
 
