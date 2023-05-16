@@ -56,6 +56,7 @@ const seedDB = async () => {
         })
         await art.save();
     }
+}
 
 seedDB().then(() => {
     mongoose.connection.close();
