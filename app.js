@@ -21,7 +21,7 @@ const ArtworkSchema = require('./models/artworks');
 const artwork = require('./models/artworks');
 const { ppid } = require('process');
 
-const MongoDBStore = require("connect-mongodb-session")(session);
+const MongoStore = require("connect-mongo");
 
 const mongoSanitize = require('express-mongo-sanitize');
 
@@ -60,11 +60,14 @@ app.use(mongoSanitize({
 
 const secret = process.env.SECRET || 'thisshouldbeabettersecret';
 
-const store = new MongoDBStore({
-    url: dbUrl,
-    secret,
-    touchAfter: 24 * 60 * 60
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: 'thisshouldbeabettersecret!'
+    }
 });
+
 
 store.on('error', function(e) {
     console.log('Session store error', e)
